@@ -56,6 +56,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             docker-compose down
-            docker rmi `docker image ls | egrep "^gabrielavellar/"`
+            docker rmi -f `docker image ls | egrep "^gabrielavellar/" | awk '{print $1":"$2}'`
             docker-compose pull
             docker-compose up -d
