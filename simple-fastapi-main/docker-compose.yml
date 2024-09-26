@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: frontend
+    image: gabrielavellar/loomitest:5.0
+    ports:
+      - "3000:3000"
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:senha123@database-1.c7mae646ymt8.sa-east-1.rds.amazonaws.com:5432/postgres
