@@ -56,6 +56,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             docker-compose down
-            
+            docker rmi -f $(docker images -q)
             docker-compose pull
             docker-compose up -d
