@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    container_name: frontend
+    container_name: frontend3
     image: gabrielavellar/loomitest:5.0
     ports:
       - "3000:3000"
