@@ -45,7 +45,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          source: docker-compose.yml
+          source: "simple-fastapi-main/docker-compose.yml"
           target: .
       - name: run docker-compose
         uses: appleboy/ssh-action@v1.0.0
