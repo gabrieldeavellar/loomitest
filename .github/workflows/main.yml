@@ -55,6 +55,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
+            cd simple-fastapi-main
             docker-compose down
             docker rmi -f $(docker images -q)
             docker-compose pull
